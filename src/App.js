@@ -8,16 +8,19 @@ import {
   Switch,
   HashRouter,
 } from 'react-router-dom';
-
+import Login from './components/log-in/Login';
 
 export default function App() {
   return (
     <div>
-      <HashRouter>
+      {/* <HashRouter>
         <Header />
-        <Routes className="content">
+       
           </Routes>
-          </HashRouter>
+          </HashRouter> */}
+           <Routes className="content">
+          <Route exact path="/" element={<Login />}></Route>
+          </Routes>
     </div>
   );
 }
