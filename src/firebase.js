@@ -1,12 +1,13 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from "firebase/app";
+
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBXrWY7bbePBkza9_PGVOovpfIiYcWZq20',
-  authDomain: 'soulipie.firebaseapp.com',
-  projectId: 'soulipie',
-  storageBucket: 'soulipie.appspot.com',
-  messagingSenderId: '201876828788',
-  appId: '1:201876828788:web:c19120f57065b2ad7f9721',
+  apiKey: "AIzaSyAtiyBlwR-4gFfgKim9h_iSjUdNgdCkONs",
+  authDomain: "strand-b25ce.firebaseapp.com",
+  projectId: "strand-b25ce",
+  storageBucket: "strand-b25ce.appspot.com",
+  messagingSenderId: "409146135205",
+  appId: "1:409146135205:web:9eaada4c12c40956de734c",
+  measurementId: "G-WWR2LJ1VB5"
 };
-
 const app = initializeApp(firebaseConfig);
