@@ -1,5 +1,7 @@
-import React from "react";
-import firebase from "./firebase";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { signInWithPhoneNumber, RecaptchaVerifier } from 'firebase/auth';
+import { auth } from './firebase';
 
 class App extends React.Component {
   handleChange = (e) => {
@@ -9,39 +11,41 @@ class App extends React.Component {
     });
   };
   configureCaptcha = () => {
-    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-      "sign-in-button",
+    auth.languageCode = 'in';
+    window.recaptchaVerifier = new RecaptchaVerifier(
+      'sign-in-button',
       {
-        size: "invisible",
+        size: 'invisible',
         callback: (response) => {
           // reCAPTCHA solved, allow signInWithPhoneNumber.
           this.onSignInSubmit();
-          console.log('recaptcha verified');
+          // console.log('recaptcha verified');
         },
-        defaultCountry: "IN",
-      }
+        // defaultCountry: "IN",
+      },
+      auth
     );
   };
   onSignInSubmit = (e) => {
     e.preventDefault();
     this.configureCaptcha();
-    const phoneNumber = "+91" + this.state.mobile;
+    const phoneNumber = '+91' + this.state.mobile;
     console.log(phoneNumber);
     const appVerifier = window.recaptchaVerifier;
-    firebase
-      .auth()
-      .signInWithPhoneNumber(phoneNumber, appVerifier)
+    // firebase
+    //   .auth()
+    signInWithPhoneNumber(auth, phoneNumber, appVerifier)
       .then((confirmationResult) => {
         // SMS sent. Prompt user to type the code from the message, then sign the
         // user in with confirmationResult.confirm(code).
         window.confirmationResult = confirmationResult;
-        console.log("OTP has been sent");
+        console.log('OTP has been sent');
         // ...
       })
       .catch((error) => {
         // Error; SMS not sent
         // ...
-        console.log("SMS not sent");
+        console.log('SMS not sent');
       });
   };
   onSubmitOTP = (e) => {
@@ -54,7 +58,7 @@ class App extends React.Component {
         // User signed in successfully.
         const user = result.user;
         console.log(JSON.stringify(user));
-        alert("User is verified");
+        alert('User is verified');
         // ...
       })
       .catch((error) => {
