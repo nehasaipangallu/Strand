@@ -1,14 +1,15 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import firebase from "firebase/app";
+import   "firebase/auth";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAtiyBlwR-4gFfgKim9h_iSjUdNgdCkONs",
-  authDomain: "strand-b25ce.firebaseapp.com",
-  projectId: "strand-b25ce",
-  storageBucket: "strand-b25ce.appspot.com",
-  messagingSenderId: "409146135205",
-  appId: "1:409146135205:web:9eaada4c12c40956de734c",
-  measurementId: "G-WWR2LJ1VB5"
+var firebaseConfig = {
+ apiKey: "AIzaSyBBjqYGJg2puZeEJoqK6i-4xU7DnO95JjA",
+ authDomain: "otp-login-compo.firebaseapp.com",
+ projectId: "otp-login-compo",
+ storageBucket: "otp-login-compo.appspot.com",
+ messagingSenderId: "634787177618",
+ appId: "1:634787177618:web:1fa925f21b7a0f1298f24b",
 };
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+
+firebase.initializeApp(firebaseConfig);
+
+export default firebase;

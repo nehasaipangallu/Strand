@@ -1,5 +1,5 @@
-import React from 'react';
-import { firebase, auth } from './firebase';
+import React from "react";
+import firebase from "./firebase";
 
 class App extends React.Component {
   handleChange = (e) => {
