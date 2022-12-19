@@ -1,7 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signInWithPhoneNumber, RecaptchaVerifier } from 'firebase/auth';
-import { auth } from './firebase';
+import {
+  signInWithPhoneNumber,
+  RecaptchaVerifier,
+  getAuth,
+} from 'firebase/auth';
+import { auth, app } from './firebase';
 
 class App extends React.Component {
   handleChange = (e) => {
@@ -11,6 +15,7 @@ class App extends React.Component {
     });
   };
   configureCaptcha = () => {
+    const auth = getAuth(app);
     auth.languageCode = 'in';
     window.recaptchaVerifier = new RecaptchaVerifier(
       'sign-in-button',
