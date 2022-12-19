@@ -5,7 +5,7 @@ import {
   RecaptchaVerifier,
   getAuth,
 } from 'firebase/auth';
-import { auth, app } from './firebase';
+import { app } from './firebase';
 
 class App extends React.Component {
   handleChange = (e) => {
@@ -32,6 +32,7 @@ class App extends React.Component {
     );
   };
   onSignInSubmit = (e) => {
+    const auth = getAuth(app);
     e.preventDefault();
     this.configureCaptcha();
     const phoneNumber = '+91' + this.state.mobile;
